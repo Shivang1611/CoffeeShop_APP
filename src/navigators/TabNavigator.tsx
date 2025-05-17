@@ -4,10 +4,14 @@ import HomeScreen from '../screens/HomeScreen'
 import CartScreen from '../screens/CartScreen'
 import FavoriteScreen from '../screens/FavoriteScreen'
 import OrderHistoryScreen from '../screens/OrderHistoryScreen'
-import { Icon } from 'react-native-vector-icons/Icon'
+import Icons from 'react-native-vector-icons/Foundation'
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
+
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import { COLORS } from '../theme/theme'
 import { BlurView } from '@react-native-community/blur'
+
+
 
 
 const Tab=createBottomTabNavigator();
@@ -22,10 +26,32 @@ const TabNavigator = () => {
         style={styles.BlurViewStyle}/>
     )
   }}  >
-    <Tab.Screen name="Home" component={HomeScreen}></Tab.Screen>
-    <Tab.Screen name="Cart Screen" component={CartScreen}></Tab.Screen>
-    <Tab.Screen name="Favorite" component={FavoriteScreen}></Tab.Screen>
-    <Tab.Screen name="Order History" component={OrderHistoryScreen}></Tab.Screen>
+    <Tab.Screen name="Home" component={HomeScreen}
+    options={{
+        tabBarIcon:({focused,color ,size})=>(
+            <Icons name='home' size={32} color={focused?COLORS.primaryOrangeHex:COLORS.primaryLightGreyHex} 
+           
+           />
+        )
+    }}></Tab.Screen>
+    <Tab.Screen name="Cart Screen" component={CartScreen}
+     options={{
+        tabBarIcon:({focused,color ,size})=>(
+            <Icon name='cart' size={32} color={focused?COLORS.primaryOrangeHex:COLORS.primaryLightGreyHex}/>
+        )
+    }}></Tab.Screen>
+    <Tab.Screen name="Favorite" component={FavoriteScreen}
+     options={{
+        tabBarIcon:({focused,color ,size})=>(
+            <Icons name='heart' size={32} color={focused?COLORS.primaryOrangeHex:COLORS.primaryLightGreyHex}/>
+        )
+    }}></Tab.Screen>
+    <Tab.Screen name="Order History" component={OrderHistoryScreen}
+     options={{
+        tabBarIcon:({focused,color ,size})=>(
+            <Icon name='bell' size={32} color={focused?COLORS.primaryOrangeHex:COLORS.primaryLightGreyHex}/>
+        )
+    }}></Tab.Screen>
   </Tab.Navigator>
   )
 }
@@ -34,11 +60,14 @@ export default TabNavigator
 
 const styles = StyleSheet.create({
     tabBarStyle:{
-        height:80,
+        height:60,
         position:"absolute",
+        
         backgroundColor:COLORS.primaryBlackRGBA,
         borderTopWidth:0,
         elevation:0,
+        alignItems:"center",
+        justifyContent:"center",
         borderTopColor:'transparent'
     },
     BlurViewStyle:{
