@@ -3,23 +3,20 @@ import React from 'react'
 import { COLORS } from '../theme/theme'
 import HeaderBar from '../components/HeaderBar'
 
-
-const FavoriteScreen = () => {
+const Notification = () => {
   return (
     <View style={styles.ScreenContainer}>
-      <HeaderBar title="Favorites" />
-     
+      <HeaderBar title="Notifications" />
     </View>
   )
 }
 
-
-
 const styles = StyleSheet.create({
-  ScreenContainer:{
-    flex:1,
-    backgroundColor:COLORS.primaryBlackHex,
-
-},
+    ScreenContainer:{
+        flex:1,
+        backgroundColor:COLORS.primaryBlackHex,
+    },
 })
-export default FavoriteScreen
+
+export default Notification
+

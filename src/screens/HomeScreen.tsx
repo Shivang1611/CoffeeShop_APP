@@ -22,6 +22,10 @@ import HeaderBar from '../components/HeaderBar';
 import Icon from 'react-native-vector-icons/Ionicons';
 import CoffeeCard from '../components/CoffeeCard';
 
+// Function to get categories from the coffee data
+
+
+
 const getCategoriesfromDate = (data: any) => {
   let temp: any = {};
   for (let i = 0; i < data.length; i++) {
@@ -60,7 +64,7 @@ const HomeScreen = () => {
   getCoffeeList(categories[0], CoffeeList),
   );
 
-  // console.log("categories List",categories);
+  console.log("categories List",categories);
 
   return (
     <View style={styles.Screencontainer}>
@@ -96,6 +100,7 @@ const HomeScreen = () => {
         </View>
 
         {/* adding the category Scroller */}
+
         <ScrollView
           horizontal
           showsHorizontalScrollIndicator={false}
@@ -141,7 +146,8 @@ const HomeScreen = () => {
           keyExtractor={item => item.id}
           renderItem={({item}) => {
             return (
-              <TouchableOpacity>                <CoffeeCard
+              <TouchableOpacity>             
+                 <CoffeeCard
                   name={item.name}
                   id={item.id}
                   index={item.index}
@@ -159,6 +165,35 @@ const HomeScreen = () => {
         />
 
         {/* Beans FlatLIst */}
+
+        <View style={{marginTop: SPACING.space_20}} >
+          <Text style={styles.ScreenTittle}>
+              Coffee Beans
+          </Text>
+
+          <ScrollView
+            horizontal
+            showsHorizontalScrollIndicator={false}
+            contentContainerStyle={styles.flatlistContainer}>
+            {BeanList.map((item: any) => (
+              <TouchableOpacity key={item.id}>
+                <CoffeeCard
+                  name={item.name}
+                  id={item.id}
+                  index={item.index}
+                  type={item.type}
+                  rosted={item.roasted}
+                  imagelink_square={item.imagelink_square}
+                  special_ingredient={item.special_ingredient}
+                  average_rating={item.average_rating}
+                  prices={item.prices}
+                  buttomPressHandler={() => {}}
+                />
+              </TouchableOpacity>
+            ))}
+            </ScrollView>
+            </View>
+      
       </ScrollView>
     </View>
   );
@@ -168,6 +203,7 @@ const styles = StyleSheet.create({
   Screencontainer: {
     flex: 1,
     backgroundColor: COLORS.primaryBlackHex,
+    height: 700,
   },
   touchable: {
     flexDirection: 'row',

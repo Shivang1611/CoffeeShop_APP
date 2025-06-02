@@ -59,7 +59,8 @@ const TabNavigator = () => {
 export default TabNavigator
 
 const styles = StyleSheet.create({
-    tabBarStyle:{
+    tabBarStyle:
+    {
         height:60,
         position:"absolute",
         
